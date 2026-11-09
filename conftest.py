@@ -1,4 +1,3 @@
-
 import os
 import shutil
 
@@ -9,6 +8,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
 
 from pages.login_page import LoginPage
+from pages.main_page import MainPage
 from urls import BASE_URL
 
 load_dotenv()
@@ -30,6 +30,17 @@ def driver(request):
 
     yield browser
     browser.quit()
+
+
+@pytest.fixture
+def main_page(driver):
+    # Создаём объект главной страницы
+    main_page = MainPage(driver)
+
+    # Открываем главную страницу
+    main_page.open_page(BASE_URL)
+
+    return main_page
 
 
 @pytest.fixture

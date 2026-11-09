@@ -45,8 +45,6 @@ class OrderFeedPage(BasePage):
 
         def check_order(driver):
             orders = self.get_orders_in_progress()
-            print(f"Ожидаемый номер: {order_number}")
-            print(f"Заказы в работе: {orders}")
             return order_number in orders
 
         self.wait_for_condition(

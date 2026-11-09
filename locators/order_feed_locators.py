@@ -1,4 +1,3 @@
-
 from selenium.webdriver.common.by import By
 
 
@@ -18,5 +17,8 @@ class OrderFeedLocators:
     # Номера заказов в разделе «В работе»
     ORDERS_IN_PROGRESS_NUMBERS = (
         By.XPATH,
-        "//p[text()='В работе:']/following-sibling::ul[contains(@class, 'OrderFeed_orderList__')][1]/li"
+        "//p[normalize-space()='В работе:']/following-sibling::ul"
+        "[contains(@class, 'OrderFeed_orderList__') "
+        "and not(contains(@class, 'OrderFeed_orderListReady__'))]"
+        "/li[contains(@class, 'text_type_digits-default')]"
     )
